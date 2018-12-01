@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -10,7 +10,20 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private Player _playerPrefab;
 
-    public Player ActivePlayer { get; set; }
+    private Player _activePlayer;
+    public Player ActivePlayer {
+        get {
+            return _activePlayer;
+        }
+        set {
+            _activePlayer = value;
+            OnActivePlayerChanged.Invoke(_activePlayer);
+        }
+    }
+
+    [Serializable]
+    public class PlayerEvent : UnityEvent<Player> { }
+    public PlayerEvent OnActivePlayerChanged = new PlayerEvent();
 
     private void Update()
     {
@@ -42,5 +55,11 @@ public class PlayerManager : MonoBehaviour
 
         ActivePlayer.Kill();
         ActivePlayer = null;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireCube(_spawnPoint.transform.position, Vector3.one);
     }
 }

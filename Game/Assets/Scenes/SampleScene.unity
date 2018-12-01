@@ -124,7 +124,7 @@ GameObject:
   m_Layer: 0
   m_Name: PlayerSpawn
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -135,7 +135,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 288728866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.47, y: -0.02, z: 0}
+  m_LocalPosition: {x: -5.41, y: -0.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -165,6 +166,21 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6af550484c825a148b1f4ee1bd0f3b76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerManager: {fileID: 1792172696}
+  Target: {fileID: 0}
+  SmoothTime: 0.2
+  MaxSpeed: 50
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -606,6 +622,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114525516406318960, guid: 03c4c5019b41d41488417fc818b03810,
+        type: 2}
+      propertyPath: OnActivePlayerChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4108918544289818, guid: 03c4c5019b41d41488417fc818b03810, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -643,6 +664,31 @@ Prefab:
       propertyPath: _spawnPoint
       value: 
       objectReference: {fileID: 288728867}
+    - target: {fileID: 114525516406318960, guid: 03c4c5019b41d41488417fc818b03810,
+        type: 2}
+      propertyPath: OnActivePlayerChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114525516406318960, guid: 03c4c5019b41d41488417fc818b03810,
+        type: 2}
+      propertyPath: OnActivePlayerChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114525516406318960, guid: 03c4c5019b41d41488417fc818b03810,
+        type: 2}
+      propertyPath: OnActivePlayerChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 519420030}
+    - target: {fileID: 114525516406318960, guid: 03c4c5019b41d41488417fc818b03810,
+        type: 2}
+      propertyPath: OnActivePlayerChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetTarget
+      objectReference: {fileID: 0}
+    - target: {fileID: 114525516406318960, guid: 03c4c5019b41d41488417fc818b03810,
+        type: 2}
+      propertyPath: OnActivePlayerChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Player, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03c4c5019b41d41488417fc818b03810, type: 2}
   m_IsPrefabAsset: 0
