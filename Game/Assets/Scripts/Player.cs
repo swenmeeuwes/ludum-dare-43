@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(SpriteRenderer))]
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    private Color _deadColor;
+    private PlayerColors _playerColors;
     [SerializeField]
     private Transform _groundCheck;
     [Range(0, .3f)] [SerializeField]
@@ -17,6 +18,8 @@ public class Player : MonoBehaviour
     private Collider2D _collider;
     private SpriteRenderer _renderer;
 
+    private PlayerColors.PlayerColorPair _colorPair;
+
     private bool _isGoingToJump;
     private bool _isGrounded;
 
@@ -25,6 +28,9 @@ public class Player : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
         _renderer = GetComponent<SpriteRenderer>();
+
+        _colorPair = _playerColors.GetRandomColorPair();
+        _renderer.color = _colorPair.AliveColor;
     }
 
     private void Update()
@@ -45,7 +51,7 @@ public class Player : MonoBehaviour
 
     public void Kill()
     {
-        _renderer.color
+        _renderer.DOColor(_colorPair.DeadColor, 0.65f);
 
         enabled = false;
         gameObject.layer = LayerMask.NameToLayer("Ground");
