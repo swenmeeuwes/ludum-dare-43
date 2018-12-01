@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(SpriteRenderer))]
 public class Player : MonoBehaviour
 {
+    [SerializeField]
+    private Color _deadColor;
     [SerializeField]
     private Transform _groundCheck;
     [Range(0, .3f)] [SerializeField]
@@ -13,6 +15,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
     private Collider2D _collider;
+    private SpriteRenderer _renderer;
 
     private bool _isGoingToJump;
     private bool _isGrounded;
@@ -21,6 +24,7 @@ public class Player : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
+        _renderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -41,6 +45,8 @@ public class Player : MonoBehaviour
 
     public void Kill()
     {
+        _renderer.color
+
         enabled = false;
         gameObject.layer = LayerMask.NameToLayer("Ground");
     }
