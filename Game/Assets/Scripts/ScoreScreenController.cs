@@ -27,6 +27,8 @@ public class ScoreScreenController : MonoBehaviour {
     {
         CompletionTimeText.text = "Completed in " + (_completionTimeInSeconds / 60f).ToString("0.00") + " minutes";
         BodiesSacrificedText.text = "Sacrificed " + StatsManager.Instance.BodiesLost  + " bodies";
+
+        StartCoroutine(ShowStats());
     }
 
     private void Update()
@@ -45,13 +47,13 @@ public class ScoreScreenController : MonoBehaviour {
 
     private IEnumerator ShowStats()
     {
-        CompletionTimeText.DOFade(1, 0.45f);
+        CompletionTimeText.DOFade(1, 0.65f);
 
-        yield return new WaitForSeconds(0.35f);
+        yield return new WaitForSeconds(0.75f);
 
-        BodiesSacrificedText.DOFade(1, 0.45f);
+        BodiesSacrificedText.DOFade(1, 0.65f);
 
-        yield return new WaitForSeconds(0.85f);
+        yield return new WaitForSeconds(2.85f);
 
         ContinueText
             .DOFade(1, 0.85f)
