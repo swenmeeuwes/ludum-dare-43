@@ -26,6 +26,11 @@ public class FollowingCamera : MonoBehaviour
     {
         _followingCamera = GetComponent<Camera>();
 
+        if (_playerManager == null)
+        {
+            _playerManager = FindObjectOfType<PlayerManager>();
+        }
+
         if (_playerManager != null)
         {
             _playerManager.OnActivePlayerChanged.AddListener(SetTarget);
