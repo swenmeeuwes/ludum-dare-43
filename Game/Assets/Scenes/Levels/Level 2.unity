@@ -397,33 +397,31 @@ Prefab:
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1160271566992450, guid: 9458bfb37d23f704896567f19fdf3f2d, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
       propertyPath: m_text
-      value: 'Move with WASD, arrow keys or joystick
-
-        Restart a level by holding ''R'' or (B)'
+      value: Restart a level by holding 'R' or (B)
       objectReference: {fileID: 0}
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
       propertyPath: m_textInfo.characterCount
-      value: 76
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
       propertyPath: m_textInfo.spaceCount
-      value: 14
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
       propertyPath: m_textInfo.wordCount
-      value: 15
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
@@ -433,7 +431,7 @@ Prefab:
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
       propertyPath: m_textInfo.lineCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
@@ -448,7 +446,7 @@ Prefab:
     - target: {fileID: 224182501891371494, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -2.5
+      value: -5.5
       objectReference: {fileID: 0}
     - target: {fileID: 224182501891371494, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
@@ -463,12 +461,12 @@ Prefab:
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
       propertyPath: m_margin.z
-      value: -5.989873
+      value: -5.4417043
       objectReference: {fileID: 0}
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
       propertyPath: m_margin.x
-      value: -6.994456
+      value: -7.4695354
       objectReference: {fileID: 0}
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}

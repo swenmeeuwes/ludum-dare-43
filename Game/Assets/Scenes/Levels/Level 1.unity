@@ -408,22 +408,22 @@ Prefab:
       propertyPath: m_text
       value: 'Move with WASD, arrow keys or joystick
 
-        Restart a level by holding ''R'' or (B)'
+        Jump with space or (A)'
       objectReference: {fileID: 0}
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
       propertyPath: m_textInfo.characterCount
-      value: 76
+      value: 61
       objectReference: {fileID: 0}
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
       propertyPath: m_textInfo.spaceCount
-      value: 14
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
       propertyPath: m_textInfo.wordCount
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
