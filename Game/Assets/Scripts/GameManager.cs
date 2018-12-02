@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        LevelSettings = Instantiate(_levelSettings);
+        LevelSettings = _levelSettings;
     }
 
     private void Start()
