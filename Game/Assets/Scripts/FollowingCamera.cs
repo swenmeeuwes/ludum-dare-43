@@ -38,7 +38,7 @@ public class FollowingCamera : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (Target == null)
         {
@@ -46,7 +46,7 @@ public class FollowingCamera : MonoBehaviour
         }
 
         var dampedPosition = Vector2.SmoothDamp(_followingCamera.transform.position, Target.transform.position + Offset,
-            ref _currentVelocity, SmoothTime, MaxSpeed, Time.fixedDeltaTime);
+            ref _currentVelocity, SmoothTime, MaxSpeed);
 
         var newPosition = new Vector3(dampedPosition.x, dampedPosition.y, _startPos.z);
         _followingCamera.transform.position = newPosition;
