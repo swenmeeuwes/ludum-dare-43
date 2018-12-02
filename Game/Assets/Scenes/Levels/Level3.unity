@@ -265,8 +265,17 @@ Prefab:
         type: 2}
       propertyPath: _levelSettings
       value: 
-      objectReference: {fileID: 11400000, guid: f8c4cb8cecadcef45966fcef2efc96cd,
+      objectReference: {fileID: 0}
+    - target: {fileID: 114341376178636770, guid: 8eb3eda85abdb344c9d66ef244e341da,
         type: 2}
+      propertyPath: _levelSettings.AvailableBodies
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114341376178636770, guid: 8eb3eda85abdb344c9d66ef244e341da,
+        type: 2}
+      propertyPath: _levelSettings.LimitedAvailableBodies
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eb3eda85abdb344c9d66ef244e341da, type: 2}
   m_IsPrefabAsset: 0
