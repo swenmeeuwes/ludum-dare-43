@@ -4,9 +4,10 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField]
     private Transform _spawnPoint;
-
     [SerializeField]
     private Player _playerPrefab;
+    [SerializeField]
+    private GameManager _gameManager;
 
     private Player _activePlayer;
     public Player ActivePlayer {
@@ -19,7 +20,17 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public PlayerEvent OnActivePlayerChanged = new PlayerEvent();    
+    public PlayerEvent OnActivePlayerChanged = new PlayerEvent();
+    public PlayerEvent OnPlayerSpawned = new PlayerEvent();
+    public PlayerEvent OnPlayerKilled = new PlayerEvent();
+
+    private void Awake()
+    {
+        if (_gameManager == null)
+        {
+            _gameManager = FindObjectOfType<GameManager>();
+        }
+    }
 
     private void Update()
     {
@@ -36,9 +47,16 @@ public class PlayerManager : MonoBehaviour
             KillPlayer();
         }
 
+        if (_gameManager.LevelSettings.AvailableBodies <= 0)
+        {
+            return;
+        }
+
         var newPlayer = Instantiate(_playerPrefab, _spawnPoint.transform.position, Quaternion.identity);
-        newPlayer.OnKilled.AddListener(OnPlayerKilled);
+        newPlayer.OnKilled.AddListener(OnPlayerKilledListener);
         ActivePlayer = newPlayer;
+
+        OnPlayerSpawned.Invoke(newPlayer);
     }
 
     public void KillPlayer()
@@ -51,9 +69,10 @@ public class PlayerManager : MonoBehaviour
         ActivePlayer.Kill();
     }
 
-    public void OnPlayerKilled(Player player)
+    public void OnPlayerKilledListener(Player player)
     {
-        player.OnKilled.RemoveListener(OnPlayerKilled);
+        player.OnKilled.RemoveListener(OnPlayerKilledListener);
+        OnPlayerKilled.Invoke(player);
 
         ActivePlayer = null;
 

@@ -61,6 +61,11 @@ public class Player : MonoBehaviour
         enabled = false;
     }
 
+    public void Destroy()
+    {
+        _renderer.DOFade(0, 0.35f).OnComplete(() => Destroy(gameObject));
+    }
+
     private void Move(Vector2 input)
     {
         _rigidbody.transform.Translate(input.x * MoveSpeed * Time.deltaTime, 0, 0);
