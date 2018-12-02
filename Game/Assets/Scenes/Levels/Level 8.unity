@@ -328,7 +328,7 @@ Prefab:
     - target: {fileID: 114341376178636770, guid: 8eb3eda85abdb344c9d66ef244e341da,
         type: 2}
       propertyPath: _levelSettings.AvailableBodies
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114341376178636770, guid: 8eb3eda85abdb344c9d66ef244e341da,
         type: 2}
