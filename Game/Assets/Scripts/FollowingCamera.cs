@@ -7,6 +7,7 @@ public class FollowingCamera : MonoBehaviour
     private PlayerManager _playerManager;
 
     public GameObject Target;
+    public Vector3 Offset;
     public float SmoothTime;
     public float MaxSpeed;
 
@@ -44,7 +45,7 @@ public class FollowingCamera : MonoBehaviour
             return;
         }
 
-        var dampedPosition = Vector2.SmoothDamp(_followingCamera.transform.position, Target.transform.position,
+        var dampedPosition = Vector2.SmoothDamp(_followingCamera.transform.position, Target.transform.position + Offset,
             ref _currentVelocity, SmoothTime, MaxSpeed, Time.fixedDeltaTime);
 
         var newPosition = new Vector3(dampedPosition.x, dampedPosition.y, _startPos.z);
