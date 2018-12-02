@@ -79,6 +79,7 @@ public class Player : MonoBehaviour
     {
         //_rigidbody.transform.Translate(input.x * MoveSpeed * Time.deltaTime, 0, 0);
         _rigidbody.velocity = new Vector2(input.x * MoveSpeed, _rigidbody.velocity.y);
+        //_rigidbody.MovePosition(_rigidbody.position + new Vector2(input.x * MoveSpeed * Time.deltaTime, 0));
 
         if (_isGoingToJump)
         {
