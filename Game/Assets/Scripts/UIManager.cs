@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
 
     public void SetBodyCountText(int bodiesLeft)
     {
-        BodyCountText.text = "Body count: " + bodiesLeft;
+        BodyCountText.text = bodiesLeft + " bodies left";
     }
 
     public void FadeIn()
