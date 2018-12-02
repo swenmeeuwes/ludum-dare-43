@@ -39,6 +39,15 @@ public class Player : MonoBehaviour
     {
         _isGrounded = Physics2D.Linecast(transform.position, _groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
+        if (!_isGrounded)
+        {
+            _isGrounded = Physics2D.Linecast(new Vector2(transform.position.x - transform.localScale.x / 2f, transform.position.y), new Vector2(_groundCheck.position.x - transform.localScale.x / 2f, _groundCheck.position.y), 1 << LayerMask.NameToLayer("Ground"));
+        }
+        if (!_isGrounded)
+        {
+            _isGrounded = Physics2D.Linecast(new Vector2(transform.position.x + transform.localScale.x / 2f, transform.position.y), new Vector2(_groundCheck.position.x + transform.localScale.x / 2f, _groundCheck.position.y), 1 << LayerMask.NameToLayer("Ground"));
+        }
+
         if (Input.GetButton("Jump") && _isGrounded)
         {
             _isGoingToJump = true;
@@ -68,7 +77,8 @@ public class Player : MonoBehaviour
 
     private void Move(Vector2 input)
     {
-        _rigidbody.transform.Translate(input.x * MoveSpeed * Time.deltaTime, 0, 0);
+        //_rigidbody.transform.Translate(input.x * MoveSpeed * Time.deltaTime, 0, 0);
+        _rigidbody.velocity = new Vector2(input.x * MoveSpeed, _rigidbody.velocity.y);
 
         if (_isGoingToJump)
         {
