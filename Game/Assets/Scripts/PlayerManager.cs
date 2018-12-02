@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -21,15 +19,13 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    [Serializable]
-    public class PlayerEvent : UnityEvent<Player> { }
-    public PlayerEvent OnActivePlayerChanged = new PlayerEvent();
+    public PlayerEvent OnActivePlayerChanged = new PlayerEvent();    
 
     private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            SpawnPlayer();
+            KillPlayer();
         }
     }
 
@@ -40,9 +36,8 @@ public class PlayerManager : MonoBehaviour
             KillPlayer();
         }
 
-        var newPlayer = Instantiate(_playerPrefab);
-        newPlayer.transform.position = _spawnPoint.position;
-
+        var newPlayer = Instantiate(_playerPrefab, _spawnPoint.transform.position, Quaternion.identity);
+        newPlayer.OnKilled.AddListener(OnPlayerKilled);
         ActivePlayer = newPlayer;
     }
 
@@ -54,12 +49,20 @@ public class PlayerManager : MonoBehaviour
         }
 
         ActivePlayer.Kill();
+    }
+
+    public void OnPlayerKilled(Player player)
+    {
+        player.OnKilled.RemoveListener(OnPlayerKilled);
+
         ActivePlayer = null;
+
+        SpawnPlayer();
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.magenta;
-        Gizmos.DrawWireCube(_spawnPoint.transform.position, Vector3.one);
+        Gizmos.DrawWireCube(_spawnPoint.position, Vector3.one);
     }
 }

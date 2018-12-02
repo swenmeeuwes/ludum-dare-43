@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     [Range(0, .3f)] [SerializeField]
     private float _movementSmoothing = .05f;
 
+    public PlayerEvent OnKilled = new PlayerEvent();
+
     public float MoveSpeed;
     public float JumpForce;
 
@@ -53,8 +55,10 @@ public class Player : MonoBehaviour
     {
         _renderer.DOColor(_colorPair.DeadColor, 0.65f);
 
-        enabled = false;
         gameObject.layer = LayerMask.NameToLayer("Ground");
+        OnKilled.Invoke(this);
+
+        enabled = false;
     }
 
     private void Move(Vector2 input)
