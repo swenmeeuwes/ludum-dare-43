@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -13,6 +14,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text RestartText;
     public TMP_Text NoBodiesLeftText;
     public TMP_Text BodyCountText;
+    public TMP_Text LevelText;
     public Image FadeImage;
 
     private void Awake()
@@ -21,6 +23,8 @@ public class UIManager : MonoBehaviour
         FadeImage.gameObject.SetActive(true);
         NoBodiesLeftText.gameObject.SetActive(false);
         BodyCountText.gameObject.SetActive(true);
+
+        LevelText.text = SceneManager.GetActiveScene().name;
     }
 
     public void SetResetText(string timeLeft)
