@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,9 +9,20 @@ public class GameManager : MonoBehaviour
     private PlayerManager _playerManager;
     [SerializeField]
     private UIManager _uiManager;
+    [SerializeField]
+    private LevelSettings _levelSettings;
 
     public PlayerManager PlayerManager {
         get { return _playerManager; }
+    }
+
+    public LevelSettings LevelSettings { get; private set; }
+    
+    public bool GameStarted { get; private set; }
+
+    private void Awake()
+    {
+        LevelSettings = Instantiate(_levelSettings);
     }
 
     private void Start()
@@ -25,25 +37,87 @@ public class GameManager : MonoBehaviour
             _uiManager = FindObjectOfType<UIManager>();
         }
 
-        _playerManager.SpawnPlayer();
+        _uiManager.BodyCountText.gameObject.SetActive(LevelSettings.LimitedAvailableBodies);
+        _uiManager.SetBodyCountText(LevelSettings.AvailableBodies);
+
+        _playerManager.OnPlayerSpawned.AddListener(OnPlayerSpawned);
+        _playerManager.OnPlayerKilled.AddListener(OnPlayerKilled);
+
+        _uiManager.FadeIn();
+        Invoke("StartGame", 0.8f);
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Restart"))
+        if (GameStarted && Input.GetButtonDown("Restart"))
         {
             StartCoroutine(RestartCoroutine());
         }
     }
 
-    public void Restart()
+    private void OnDestroy()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (_playerManager != null)
+        {
+            _playerManager.OnPlayerSpawned.RemoveListener(OnPlayerSpawned);
+            _playerManager.OnPlayerKilled.RemoveListener(OnPlayerKilled);
+        }
+    }
+
+    public void Restart(bool fadeOut = true)
+    {
+        Action restartCallback = () => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (fadeOut)
+        {
+            _uiManager.FadeOut(restartCallback);
+        }
+        else
+        {
+            restartCallback.Invoke();
+        }
     }
 
     public void Win()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        _uiManager.FadeOut(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
+    }
+
+    public void Lose()
+    {
+        Restart();
+    }
+
+    private void StartGame()
+    {
+        _playerManager.SpawnPlayer();
+        GameStarted = true;
+    }
+
+    private void OnPlayerSpawned(Player player)
+    {
+        if (LevelSettings.LimitedAvailableBodies)
+        {
+            LevelSettings.AvailableBodies--;
+            _uiManager.SetBodyCountText(LevelSettings.AvailableBodies);
+        }
+
+        Debug.Log("Available bodies: " + LevelSettings.AvailableBodies);
+    }
+
+    private void OnPlayerKilled(Player player)
+    {
+        if (LevelSettings.AvailableBodies <= 0)
+        {
+            NoBodiesLeft();
+        }
+    }
+
+    private void NoBodiesLeft()
+    {
+        _uiManager.FadeOut();
+
+        Action callback = () => Lose();
+        StartCoroutine(_uiManager.ShowNoBodiesLeft(callback));
     }
 
     private IEnumerator RestartCoroutine()
