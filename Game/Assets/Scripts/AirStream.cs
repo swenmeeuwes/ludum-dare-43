@@ -24,7 +24,7 @@ public class AirStream : MonoBehaviour {
             var rigidbody = hit.transform.GetComponent<Rigidbody2D>();
             if (rigidbody)
             {
-                rigidbody.AddForce(Vector2.up * Force);
+                rigidbody.AddForce(transform.up * Force);
                 break;
             }
         }
