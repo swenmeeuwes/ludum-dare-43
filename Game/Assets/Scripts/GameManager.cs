@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviour
         if (LevelSettings.LimitedAvailableBodies)
         {
             LevelSettings.AvailableBodies--;
+            StatsManager.Instance.BodiesLost++;
             _uiManager.SetBodyCountText(LevelSettings.AvailableBodies);
         }
 
