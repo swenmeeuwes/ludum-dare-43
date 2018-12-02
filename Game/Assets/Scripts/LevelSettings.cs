@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
 
-[CreateAssetMenu(fileName = "Level Settings")]
-public class LevelSettings : ScriptableObject {
+[Serializable]
+public class LevelSettings {
     public bool LimitedAvailableBodies;
     public int AvailableBodies = 1;
 }
