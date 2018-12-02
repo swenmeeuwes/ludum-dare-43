@@ -4,6 +4,8 @@ using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class KillPlayer : MonoBehaviour {
+    public bool Obliterate;
+
     private BoxCollider2D _collider;
 
     private void Start()
@@ -20,6 +22,10 @@ public class KillPlayer : MonoBehaviour {
             if (player != null)
             {
                 player.Kill();
+                if (Obliterate)
+                {
+                    player.Destroy();
+                }
             }
         }
     }
