@@ -634,22 +634,22 @@ Prefab:
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
       propertyPath: m_text
-      value: Sacrifice with left ctrl or (Y)
+      value: Sacrifice with left ctrl, left shift, 'Enter' or (Y)
       objectReference: {fileID: 0}
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
       propertyPath: m_textInfo.characterCount
-      value: 31
+      value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
       propertyPath: m_textInfo.spaceCount
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
       propertyPath: m_textInfo.wordCount
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 114994055844338196, guid: 9458bfb37d23f704896567f19fdf3f2d,
         type: 2}
